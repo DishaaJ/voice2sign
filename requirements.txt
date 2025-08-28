@@ -1,0 +1,17 @@
+yt-dlp
+openai-whisper
+torch
+librosa
+soundfile
+ffmpeg-python
+spacy
+transformers
+accelerate
+numpy
+pandas
+tqdm
+pydub
+rich
+opencv-python
+pyyaml
+python-dotenv
