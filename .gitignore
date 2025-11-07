@@ -1,13 +1,83 @@
+# ================================
+# PYTHON PROJECT IGNORE SETTINGS
+# ================================
+
 # Virtual environment
 venv/
+env/
+.venv/
 
-# Output files
-output/
-
-# Python cache
+# Python cache files
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+*.pdb
+*.log
+
+# IDE and editor folders
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ================================
+# DATA AND MODEL FILES
+# ================================
+
+# Datasets (too large for GitHub)
+datasets/
+datasets/data/
+data/
+*.npy
+*.npz
+
+# Model checkpoints / weights
+*.pt
+*.pth
+*.h5
+*.ckpt
+
+# Generated samples and poses
+samples/
+poses/
+output/
+checkpoints/
+runs/
+results/
+tmp/
+logs/
+
+# ================================
+# MISC FILES
+# ================================
+
+# Local configuration files
+*.ini
+*.cfg
+*.toml
+*.jsonl
+*.yaml
+*.yml
+
+# CSVs and metadata (optional to ignore if large)
+*.csv
 
 # OS files
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# ================================
+# OPTIONAL
+# ================================
+# Ignore Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Ignore compiled extensions
+build/
+dist/
+*.egg-info/
