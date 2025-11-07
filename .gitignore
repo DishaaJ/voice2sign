@@ -81,3 +81,9 @@ desktop.ini
 build/
 dist/
 *.egg-info/
+datasets/
+samples/
+poses/
+*.pt
+venv/
+__pycache__/
