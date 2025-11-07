@@ -2,22 +2,53 @@ from __future__ import annotations
 from typing import Dict, Any, List
 from transformers import pipeline
 from config import Config
+from utils import write_json
+from pathlib import Path
 
-# Load pipeline once
+
+# Load emotion model only once for efficiency
+print("[🧠] Loading emotion detection model...")
 _EMO = pipeline(
     "text-classification",
     model="bhadresh-savani/distilbert-base-uncased-emotion",
     return_all_scores=True,
 )
+print("✅ Emotion model loaded successfully.\n")
 
 
-def add_emotion_to_segments(gloss_json: Dict[str, Any]) -> Dict[str, Any]:
+def add_emotion_to_segments(gloss_json: Dict[str, Any], cfg: Config = Config()) -> Dict[str, Any]:
+    """
+    Add emotion labels and confidence scores to each segment in gloss_json.
+    Saves output to 'output' directory.
+    """
+    cfg.ensure_dirs()
+
+    print("[🎭] Analyzing emotions for each text segment...")
     out_segments: List[Dict[str, Any]] = []
-    for seg in gloss_json["segments"]:
-        text = seg["text"]
+
+    for i, seg in enumerate(gloss_json.get("segments", []), 1):
+        text = seg.get("text", "").strip()
+        if not text:
+            seg_out = dict(seg)
+            seg_out["emotion"] = {"label": "neutral", "score": 0.0}
+            out_segments.append(seg_out)
+            continue
+
+        # Get model predictions
         scores = _EMO(text)[0]  # list of {label, score}
         top = max(scores, key=lambda x: x["score"]) if scores else {"label": "neutral", "score": 0.0}
+
         seg_out = dict(seg)
         seg_out["emotion"] = {"label": top["label"], "score": float(top["score"])}
         out_segments.append(seg_out)
-    return {"segments": out_segments}
+
+        print(f"  [{i}] '{text[:40]}...' → {top['label']} ({top['score']:.2f})")
+
+    out = {"segments": out_segments}
+
+    # Save the updated emotion-enriched JSON
+    output_path = Path(cfg.output_dir) / "emotion_output.json"
+    write_json(output_path, out)
+    print(f"\n✅ Emotion analysis complete. Saved: {output_path.name}")
+
+    return out

@@ -6,7 +6,9 @@ from stage1_transcribe import transcribe_wav
 cfg = Config()
 cfg.ensure_dirs()
 
-url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"  # replace with any short video
+# Replace with a short YouTube video URL you want to test
+url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+
 print("[TEST] Downloading & converting audio...")
 wav_path = download_audio_to_wav(url, cfg)
 

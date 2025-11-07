@@ -1,3 +1,6 @@
+
+
+
 yt-dlp
 openai-whisper
 torch
@@ -15,3 +18,9 @@ rich
 opencv-python
 pyyaml
 python-dotenv
+torch
+torchvision
+mediapipe
+opencv-python
+flask
+numpy

@@ -1,16 +1,13 @@
 from __future__ import annotations
 from pathlib import Path
 from typing import Optional
-import subprocess, shutil
+import subprocess
+import shutil
 from yt_dlp import YoutubeDL
 from config import Config
 
 
 def _ffmpeg_bin() -> str:
-    """
-    Locate ffmpeg binary. 
-    Relies on ffmpeg being available on PATH.
-    """
     found = shutil.which("ffmpeg")
     if found:
         return found
@@ -30,6 +27,7 @@ def _run_ffmpeg(args: list[str]) -> None:
 def download_audio_to_wav(url: str, cfg: Optional[Config] = None) -> Path:
     """
     Download audio from a YouTube URL and convert it to 16kHz mono WAV.
+    Returns: Path to the created WAV file.
     """
     cfg = cfg or Config()
     cfg.ensure_dirs()
@@ -50,7 +48,13 @@ def download_audio_to_wav(url: str, cfg: Optional[Config] = None) -> Path:
     # Step 2: Convert to 16kHz mono WAV using ffmpeg
     safe_name = downloaded_path.stem
     wav_path = cfg.output_dir / f"{safe_name}.wav"
-    ff_args = ["-i", str(downloaded_path), "-ac", "1", "-ar", str(cfg.sample_rate), str(wav_path)]
+
+    ff_args = [
+        "-i", str(downloaded_path),
+        "-ac", "1",  # mono
+        "-ar", str(cfg.sample_rate),  # sample rate (16k typical)
+        str(wav_path)
+    ]
     _run_ffmpeg(ff_args)
 
     return wav_path
