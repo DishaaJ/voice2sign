@@ -1,26 +1,32 @@
+# Core dependencies
+yt-dlp>=2024.0.0                    # YouTube downloader
+openai-whisper>=20231117           # Speech-to-text model
+torch>=2.0.0                        # PyTorch deep learning
+spacy>=3.7.0                        # NLP & lemmatization
+transformers>=4.35.0                # Hugging Face models
+accelerate>=0.24.0                  # Distributed training
 
+# Audio processing
+librosa>=0.10.0                     # Audio analysis
+soundfile>=0.12.0                   # Audio I/O
+pydub>=0.25.0                       # Audio manipulation
 
+# Computer vision
+opencv-python>=4.8.0                # Video/image handling
+mediapipe>=0.10.0                   # Pose detection (optional)
 
-yt-dlp
-openai-whisper
-torch
-librosa
-soundfile
-ffmpeg-python
-spacy
-transformers
-accelerate
-numpy
-pandas
-tqdm
-pydub
-rich
-opencv-python
-pyyaml
-python-dotenv
-torch
-torchvision
-mediapipe
-opencv-python
-flask
-numpy
+# Utilities
+numpy>=1.24.0                       # Numerical computing
+pandas>=2.1.0                       # Data manipulation
+tqdm>=4.66.0                        # Progress bars
+pyyaml>=6.0                         # Config files
+python-dotenv>=1.0.0                # Environment variables
+rich>=13.7.0                        # Formatted output
+
+# Web UI
+streamlit>=1.28.0                   # Interactive web app
+
+# Development (optional)
+pytest>=7.4.0                       # Testing
+black>=23.10.0                      # Code formatting
+pylint>=3.0.0                       # Linting
