@@ -20,6 +20,7 @@ from modules.stage2_nlp import process_segments_to_gloss, save_gloss_json
 from modules.stage2_emotion import add_emotion_to_segments
 from modules.stage3_map import build_sign_timeline, save_timeline_json
 from scripts.create_fingerspelling import create_fingerspelling_gif
+from scripts.dual_gif_generator import get_dual_gif_generator
 import uuid
 
 
@@ -282,27 +283,75 @@ if "transcript_json" in st.session_state:
                 gloss_text = " → ".join(gloss_clean)
                 st.markdown(f'### {gloss_text}')
                 
-                # Display fingerspelling GIFs for each word
-                st.markdown("**🎬 Fingerspelling Animation (Letter by Letter):**")
-                st.caption("Watch each word spelled out letter by letter - this is how to fingerspell!")
+                # Initialize GIF generator
+                gif_gen = get_dual_gif_generator()
                 
-                # Create animated GIF showing all words spelled out
+                # ===== DISPLAY 1: LETTER-WISE GIFs (Individual letters) =====
+                st.markdown("**📸 Letter-Wise Fingerspelling (Individual Letters):**")
+                st.caption("🔤 Each letter individually - perfect for learning hand positions")
+                
                 try:
-                    # Generate unique GIF path for this segment
-                    gif_id = str(uuid.uuid4())[:8]
-                    gif_path = f"output/fingerspelling_{gif_id}.gif"
+                    letter_cols = st.columns(len(gloss_clean) if len(gloss_clean) <= 4 else 4)
                     
-                    # Create fingerspelling GIF (300ms per letter = FAST!)
-                    create_fingerspelling_gif(gloss_clean, gif_path, duration_per_letter=300)
-                    
-                    # Display GIF
-                    with open(gif_path, 'rb') as f:
-                        st.image(f, caption=f"Fingerspelling: {gloss_text}", use_container_width=True)
-                    
-                    # Clean up
-                    Path(gif_path).unlink(missing_ok=True)
+                    for idx, token in enumerate(gloss_clean):
+                        first_letter = token[0].upper() if token else '?'
+                        col = letter_cols[idx % len(letter_cols)]
+                        
+                        with col:
+                            # Generate or get cached letter GIF
+                            letter_gif = gif_gen.create_letter_gif(first_letter)
+                            
+                            if letter_gif and Path(letter_gif).exists():
+                                st.image(letter_gif, caption=f"🔤 {first_letter}", use_container_width=True)
+                            else:
+                                st.markdown(f"### {first_letter}\n*Loading...*")
+                
                 except Exception as e:
-                    st.warning(f"⚠️ Could not create fingerspelling animation: {str(e)}")
+                    st.warning(f"⚠️ Could not generate letter GIFs: {str(e)}")
+                
+                st.divider()
+                
+                # ===== DISPLAY 2: TOKEN-WISE GIFs (Full words) =====
+                st.markdown("**🎬 Token-Wise Fingerspelling (Full Words):**")
+                st.caption("🎞️ Watch each word spelled out letter by letter at comfortable speed (300ms per letter)")
+                
+                try:
+                    # Create GIF for each token
+                    token_cols = st.columns(min(3, len(gloss_clean)))
+                    
+                    for idx, token in enumerate(gloss_clean):
+                        col = token_cols[idx % len(token_cols)]
+                        
+                        with col:
+                            # Generate or get cached token GIF
+                            token_gif = gif_gen.create_token_gif(token)
+                            
+                            if token_gif and Path(token_gif).exists():
+                                st.image(token_gif, caption=f"🎬 Spelling: {token}", use_container_width=True)
+                            else:
+                                st.markdown(f"### {token}\n*Generating...*")
+                
+                except Exception as e:
+                    st.warning(f"⚠️ Could not generate token GIFs: {str(e)}")
+                
+                st.divider()
+                
+                # ===== DISPLAY 3: COMBINED GIF (All words fast) =====
+                st.markdown("**⚡ Combined Fast Fingerspelling (All Words):**")
+                st.caption("🚀 All words together at faster speed (250ms per letter) - challenge mode!")
+                
+                try:
+                    gif_id = str(uuid.uuid4())[:8]
+                    combined_gif = f"output/combined_{gif_id}.gif"
+                    
+                    create_fingerspelling_gif(gloss_clean, combined_gif, duration_per_letter=250)
+                    
+                    st.image(combined_gif, caption=f"⚡ Combined: {gloss_text}", use_container_width=True)
+                    
+                    Path(combined_gif).unlink(missing_ok=True)
+                    
+                except Exception as e:
+                    st.warning(f"⚠️ Could not create combined animation: {str(e)}")
                 
                 st.divider()
                 
