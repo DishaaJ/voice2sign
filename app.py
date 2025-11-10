@@ -1,6 +1,6 @@
 """
 🤟 Voice2Sign: YouTube Video → Captions + Sign Language
-Complete app with caching, MNIST signs, and enhanced display
+Complete app with real ISL (Indian Sign Language) images
 """
 import sys
 from pathlib import Path
@@ -12,13 +12,15 @@ import json
 import re
 from utils.config import Config
 from utils.helpers import read_json, write_json
-from utils.mnist_sign_loader import get_mnist_loader
+from utils.isl_loader import get_isl_loader
 from utils.cache_manager import CacheManager
 from modules.stage1_youtube import download_youtube_audio
 from modules.stage1_transcribe import transcribe_wav
 from modules.stage2_nlp import process_segments_to_gloss, save_gloss_json
 from modules.stage2_emotion import add_emotion_to_segments
 from modules.stage3_map import build_sign_timeline, save_timeline_json
+from scripts.create_fingerspelling import create_fingerspelling_gif
+import uuid
 
 
 # ============================================================
@@ -45,7 +47,7 @@ st.set_page_config(
     layout="wide",
 )
 
-st.title("🤟 Voice2Sign")
+st.title("Voice2Sign")
 st.markdown("**YouTube → Transcription → Sign Language with MNIST Visualization**")
 
 
@@ -247,62 +249,91 @@ if "transcript_json" in st.session_state:
     
     st.divider()
     
-    # Transcript with signs
-    st.subheader("📚 Transcript with Sign Language Description")
+    # Transcript with ISL Images
+    st.subheader("📚 Full Transcript with Real Sign Language Images")
     
-    dataset_path = Path(__file__).parent / "datasets" / "sign-language-mnist"
-    mnist_loader = get_mnist_loader(dataset_path) if dataset_path.exists() else None
+    # Load ISL dataset
+    isl_path = Path(__file__).parent / "data"
+    isl_loader = get_isl_loader(isl_path) if isl_path.exists() else None
     
     for i, seg in enumerate(timeline_data, 1):
         with st.container():
             # Header with timestamp
             st.markdown(f"### Segment {i}: ⏱️ {seg['start']:.1f}s - {seg['end']:.1f}s")
             
-            # Create two columns: English + Full Sign Language Description
-            col_eng, col_sign = st.columns([1, 1])
+            # English transcript
+            st.markdown("**📝 English:**")
+            st.markdown(f'> {seg["text"]}')
             
-            with col_eng:
-                st.markdown("**📝 English Transcript:**")
-                st.markdown(f'> {seg["text"]}')
-                
-                # Emotion badge (if exists)
-                if seg.get('emotion'):
-                    emo = seg['emotion']
-                    emojis = {'joy': '😊', 'sadness': '😢', 'anger': '😠', 'fear': '😨', 'neutral': '😐', 'surprise': '😮'}
-                    emoji = emojis.get(emo.get('label', 'neutral'), '😐')
-                    st.caption(f"{emoji} Emotion: {emo.get('label', 'neutral').upper()} ({emo.get('score', 0):.0%})")
+            # Emotion badge (if exists)
+            if seg.get('emotion'):
+                emo = seg['emotion']
+                emojis = {'joy': '😊', 'sadness': '😢', 'anger': '😠', 'fear': '😨', 'neutral': '😐', 'surprise': '😮'}
+                emoji = emojis.get(emo.get('label', 'neutral'), '😐')
+                st.caption(f"{emoji} Emotion: {emo.get('label', 'neutral').upper()} ({emo.get('score', 0):.0%})")
             
-            with col_sign:
-                st.markdown("**🤟 Sign Language Description:**")
+            # Full sign language description
+            gloss = seg.get('gloss', [])
+            gloss_clean = [g for g in gloss if g != '|']
+            
+            if gloss_clean:
+                # Full description
+                st.markdown("**🤟 Sign Language (Full Description):**")
+                gloss_text = " → ".join(gloss_clean)
+                st.markdown(f'### {gloss_text}')
                 
-                # Full gloss description (converted text)
-                gloss = seg.get('gloss', [])
-                gloss_clean = [g for g in gloss if g != '|']
+                # Display fingerspelling GIFs for each word
+                st.markdown("**🎬 Fingerspelling Animation (Letter by Letter):**")
+                st.caption("Watch each word spelled out letter by letter - this is how to fingerspell!")
                 
-                if gloss_clean:
-                    # Create full description
-                    gloss_text = " → ".join(gloss_clean)
-                    st.markdown(f'> **{gloss_text}**')
+                # Create animated GIF showing all words spelled out
+                try:
+                    # Generate unique GIF path for this segment
+                    gif_id = str(uuid.uuid4())[:8]
+                    gif_path = f"output/fingerspelling_{gif_id}.gif"
                     
-                    # Show MNIST images below
-                    st.markdown("**Visual Signs:**")
-                    for row_idx in range(0, len(gloss_clean), 5):
-                        row_signs = gloss_clean[row_idx:min(row_idx + 5, len(gloss_clean))]
-                        row_cols = st.columns(len(row_signs))
+                    # Create fingerspelling GIF (300ms per letter = FAST!)
+                    create_fingerspelling_gif(gloss_clean, gif_path, duration_per_letter=300)
+                    
+                    # Display GIF
+                    with open(gif_path, 'rb') as f:
+                        st.image(f, caption=f"Fingerspelling: {gloss_text}", use_container_width=True)
+                    
+                    # Clean up
+                    Path(gif_path).unlink(missing_ok=True)
+                except Exception as e:
+                    st.warning(f"⚠️ Could not create fingerspelling animation: {str(e)}")
+                
+                st.divider()
+                
+                # Display real ISL images (bonus)
+                st.markdown("**📸 Individual Sign Language Images (Real ISL):**")
+                
+                if isl_loader:
+                    # Display in rows of 4
+                    for row_idx in range(0, len(gloss_clean), 4):
+                        row_signs = gloss_clean[row_idx:min(row_idx + 4, len(gloss_clean))]
+                        row_cols = st.columns(len(row_signs), gap="medium")
                         
                         for col, token in zip(row_cols, row_signs):
                             with col:
                                 try:
+                                    # Get first letter for image lookup
                                     first_letter = token[0].upper() if token else '?'
-                                    image = mnist_loader.get_sign_image(first_letter) if mnist_loader else None
+                                    
+                                    # Load ISL image
+                                    image = isl_loader.get_sign_image(first_letter, size=350)
+                                    
                                     if image:
-                                        col.image(image, caption=f"{token}", use_container_width=True)
+                                        col.image(image, caption=f"🤟 {token}", use_container_width=True)
                                     else:
-                                        col.markdown(f"**{token}**")
-                                except:
-                                    col.markdown(f"**{token}**")
+                                        col.markdown(f"### {token}\n*ISL image not available*", help=f"No images for {first_letter}")
+                                except Exception as e:
+                                    col.markdown(f"### {token}\n*Error loading*")
                 else:
-                    st.info("No sign language tokens")
+                    st.warning("⚠️ ISL dataset not found at /data")
+            else:
+                st.info("⚠️ No sign language tokens for this segment")
             
             st.divider()
     

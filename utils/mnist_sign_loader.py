@@ -1,6 +1,7 @@
 """
-Sign Language MNIST Data Handler
+Sign Language MNIST Data Handler with Reference Images
 Converts MNIST dataset to visual sign language representations
+Uses high-quality reference images for better clarity
 """
 import numpy as np
 import pandas as pd
@@ -11,7 +12,7 @@ import io
 from typing import Optional, Dict, List
 
 
-# MNIST Sign classes
+# MNIST Sign classes (A-Z, excluding J)
 SIGN_CLASSES = {
     0: 'A', 1: 'B', 2: 'C', 3: 'D', 4: 'E', 5: 'F', 6: 'G', 7: 'H', 8: 'I',
     9: 'K', 10: 'L', 11: 'M', 12: 'N', 13: 'O', 14: 'P', 15: 'Q', 16: 'R',
@@ -26,7 +27,15 @@ class MNISTSignLoader:
         self.dataset_path = dataset_path
         self.train_csv = dataset_path / "sign_mnist_train.csv"
         self.test_csv = dataset_path / "sign_mnist_test.csv"
+        
+        # Reference images
+        self.amer_sign2 = dataset_path / "amer_sign2.png"
+        self.amer_sign3 = dataset_path / "amer_sign3.png"
+        self.american_sign_language = dataset_path / "american_sign_language.PNG"
+        
         self.data_cache = {}
+        self.train_df = None
+        self.test_df = None
         self._load_data()
     
     def _load_data(self):
@@ -46,8 +55,29 @@ class MNISTSignLoader:
             self.train_df = None
             self.test_df = None
     
-    def get_sign_image(self, class_id) -> Optional[Image.Image]:
-        """Get a sign image for a specific class - upscaled to high resolution"""
+    def get_reference_image(self) -> Optional[Image.Image]:
+        """Get the best available reference image"""
+        # Try in order of preference
+        for img_path in [self.american_sign_language, self.amer_sign2, self.amer_sign3]:
+            if img_path.exists():
+                try:
+                    img = Image.open(img_path)
+                    return img.convert('RGB')
+                except:
+                    continue
+        return None
+    
+    def get_sign_image(self, class_id, size: int = 300) -> Optional[Image.Image]:
+        """
+        Get a sign image for a specific class - MNIST data upscaled to high quality
+        
+        Args:
+            class_id: Letter (str) or index (int) 
+            size: Output image size (default 300x300)
+        
+        Returns:
+            PIL Image of the sign at specified size
+        """
         try:
             # Handle both letter (str) and index (int)
             if isinstance(class_id, str):
@@ -72,8 +102,13 @@ class MNISTSignLoader:
             # Reshape to 28x28
             img = Image.fromarray(img_data.reshape(28, 28), mode='L')
             
-            # Upscale to 224x224 using high-quality resampling
-            img = img.resize((224, 224), Image.Resampling.LANCZOS)
+            # Upscale to specified size with high-quality resampling
+            img = img.resize((size, size), Image.Resampling.LANCZOS)
+            
+            # Enhance contrast for better visibility
+            from PIL import ImageEnhance
+            enhancer = ImageEnhance.Contrast(img)
+            img = enhancer.enhance(1.5)  # Increase contrast by 50%
             
             # Convert to RGB with white background
             img_rgb = Image.new('RGB', img.size, 'white')
@@ -131,8 +166,8 @@ def create_sign_grid_image(sign_label: str, mnist_loader: MNISTSignLoader, num_s
     return grid_image
 
 
-def display_sign_in_streamlit(sign_label: str, mnist_loader: MNISTSignLoader, width=100):
-    """Display a sign with label in Streamlit"""
+def display_sign_in_streamlit(sign_label: str, mnist_loader: MNISTSignLoader, width=150):
+    """Display a sign with label in Streamlit - LARGER"""
     image = mnist_loader.get_sign_image(sign_label)
     
     if image:
@@ -157,3 +192,4 @@ def get_mnist_loader(dataset_path: Path) -> MNISTSignLoader:
     if _mnist_loader is None:
         _mnist_loader = MNISTSignLoader(dataset_path)
     return _mnist_loader
+
