@@ -6,7 +6,7 @@ class Config:
     whisper_model: str = "base"
     language: str | None = None
 
-    root: Path = Path(__file__).parent.resolve()
+    root: Path = Path(__file__).parent.parent.resolve()
     assets_dir: Path = root / "assets"
     signs_dir: Path = assets_dir / "signs"
     sign_dict_csv: Path = assets_dir / "sign_dictionary.csv"

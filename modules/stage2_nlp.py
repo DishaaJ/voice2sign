@@ -2,8 +2,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import List, Dict, Any
 import spacy
-from config import Config
-from utils import write_json
+from utils.config import Config
+from utils.helpers import write_json
 
 # -------------------- Load spaCy Model --------------------
 try:

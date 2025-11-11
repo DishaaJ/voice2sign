@@ -1,8 +1,8 @@
 from __future__ import annotations
 from typing import Dict, Any, List
 from transformers import pipeline
-from config import Config
-from utils import write_json
+from utils.config import Config
+from utils.helpers import write_json
 from pathlib import Path
 
 
@@ -16,11 +16,19 @@ _EMO = pipeline(
 print("✅ Emotion model loaded successfully.\n")
 
 
-def add_emotion_to_segments(gloss_json: Dict[str, Any], cfg: Config = Config()) -> Dict[str, Any]:
+def add_emotion_to_segments(gloss_json: Dict[str, Any], cfg: Config = None) -> Dict[str, Any]:
     """
     Add emotion labels and confidence scores to each segment in gloss_json.
+    
+    The emotion analysis helps generate more expressive sign language animations:
+    - Happy/excited → animated signing
+    - Sad/angry → slower, more deliberate signing  
+    - Neutral → standard signing
+    
     Saves output to 'output' directory.
     """
+    if cfg is None:
+        cfg = Config()
     cfg.ensure_dirs()
 
     print("[🎭] Analyzing emotions for each text segment...")

@@ -4,7 +4,7 @@ from typing import Optional
 import subprocess
 import shutil
 from yt_dlp import YoutubeDL
-from config import Config
+from utils.config import Config
 
 
 def _ffmpeg_bin() -> str:
@@ -24,7 +24,7 @@ def _run_ffmpeg(args: list[str]) -> None:
         raise RuntimeError(proc.stderr.decode("utf-8", errors="ignore"))
 
 
-def download_audio_to_wav(url: str, cfg: Optional[Config] = None) -> Path:
+def download_youtube_audio(url: str, cfg: Optional[Config] = None) -> Path:
     """
     Download audio from a YouTube URL and convert it to 16kHz mono WAV.
     Returns: Path to the created WAV file.

@@ -87,3 +87,8 @@ poses/
 *.pt
 venv/
 __pycache__/
+cache/video_LgfbGTHOHog_stage_download.json
+cache/video_LgfbGTHOHog_stage_emotion.json
+cache/video_LgfbGTHOHog_stage_gloss.json
+cache/video_LgfbGTHOHog_stage_timeline.json
+cache/video_LgfbGTHOHog_stage_transcribe.json

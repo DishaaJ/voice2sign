@@ -2,8 +2,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Dict, Any, List
 import os
-from config import Config
-from utils import write_json
+from utils.config import Config
+from utils.helpers import write_json
 
 # ==========================================================
 # STEP 1: Detect dataset automatically
@@ -14,7 +14,7 @@ if dataset_path.exists():
     print("✅ [Dataset] Found ISL dataset at:", dataset_path)
     print("📂 Sample contents:", os.listdir(dataset_path)[:5], "\n")
 else:
-    print("❌ [Error] Dataset folder NOT found. Please check 'datasets/data' path.\n")
+    print("⚠️  [Dataset] Folder NOT found at 'datasets/data'. This is optional - will use fallback methods.\n")
 
 
 # ==========================================================
@@ -23,14 +23,14 @@ else:
 def load_sign_dict(dataset_path: Path) -> dict:
     """Auto-load ISL sign mappings directly from dataset folder."""
     if not dataset_path.exists():
-        print("❌ Dataset path not found!")
+        print("⚠️  Dataset path not found - using text fallback only")
         return {}
 
     mapping: dict[str, str] = {}
     for folder in dataset_path.iterdir():
         if folder.is_dir():
             for file in folder.iterdir():
-                if file.suffix.lower() in [".jpg", ".png", ".mp4"]:
+                if file.suffix.lower() in [".jpg", ".png", ".mp4", ".gif"]:
                     mapping[folder.name.upper()] = str(file)
                     break  # One representative file per sign/letter
 
@@ -58,13 +58,13 @@ def token_to_assets(token: str, mapping: dict, cfg: Config) -> List[Dict[str, st
     # Exact ISL match
     if token in mapping:
         path = Path(mapping[token])
-        return [{"type": "image", "path": str(path)}]
+        return [{"type": "image", "path": str(path), "label": token}]
 
     # Fallback: fingerspelling each character
     assets: List[Dict[str, str]] = []
     for ch in token:
         if ch in ALPHABET:
-            assets.append({"type": "fingerspell", "label": ALPHABET[ch]})
+            assets.append({"type": "fingerspell", "label": ALPHABET[ch], "char": ch})
 
     # If still no match → text fallback
     if not assets:
@@ -86,6 +86,7 @@ def build_sign_timeline(gloss_json: Dict[str, Any], cfg: Config) -> Dict[str, An
         seg_items = []
         for tok in seg.get("gloss", []):
             seg_items.extend(token_to_assets(tok, mapping, cfg))
+        
         timeline.append({
             "id": seg.get("id"),
             "start": seg.get("start"),

@@ -2,8 +2,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Optional, Dict, Any
 import whisper
-from config import Config
-from utils import write_json
+from utils.config import Config
+from utils.helpers import write_json
 
 
 def transcribe_wav(wav_path: Path, cfg: Optional[Config] = None) -> Dict[str, Any]:
