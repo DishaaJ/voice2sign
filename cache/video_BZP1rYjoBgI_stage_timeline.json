@@ -1,0 +1,966 @@
+{
+  "timeline": [
+    {
+      "id": 0,
+      "start": 0.0,
+      "end": 2.76,
+      "text": "This video is...",
+      "gloss": [
+        "VIDEO"
+      ],
+      "emotion": {},
+      "items": [
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_V",
+          "char": "V"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_I",
+          "char": "I"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_D",
+          "char": "D"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_E",
+          "char": "E"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "start": 2.76,
+      "end": 6.8,
+      "text": "30 seconds long, what's that? It's 30 seconds long, we don't have time to get along",
+      "gloss": [
+        "30",
+        "SECOND",
+        "LONG",
+        "|",
+        "30",
+        "SECOND",
+        "LONG",
+        "NOT",
+        "TIME"
+      ],
+      "emotion": {},
+      "items": [
+        {
+          "type": "text",
+          "label": "30"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_S",
+          "char": "S"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_E",
+          "char": "E"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_C",
+          "char": "C"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_D",
+          "char": "D"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_L",
+          "char": "L"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_G",
+          "char": "G"
+        },
+        {
+          "type": "pause",
+          "dur": 0.4
+        },
+        {
+          "type": "text",
+          "label": "30"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_S",
+          "char": "S"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_E",
+          "char": "E"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_C",
+          "char": "C"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_D",
+          "char": "D"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_L",
+          "char": "L"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_G",
+          "char": "G"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_T",
+          "char": "T"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_T",
+          "char": "T"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_I",
+          "char": "I"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_M",
+          "char": "M"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_E",
+          "char": "E"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 6.8,
+      "end": 11.28,
+      "text": "because it's 30 seconds long, you all have many things to do, that's why I'm being short with you",
+      "gloss": [
+        "30",
+        "SECOND",
+        "LONG",
+        "THING",
+        "SHORT"
+      ],
+      "emotion": {},
+      "items": [
+        {
+          "type": "text",
+          "label": "30"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_S",
+          "char": "S"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_E",
+          "char": "E"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_C",
+          "char": "C"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_D",
+          "char": "D"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_L",
+          "char": "L"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_G",
+          "char": "G"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_T",
+          "char": "T"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_H",
+          "char": "H"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_I",
+          "char": "I"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_G",
+          "char": "G"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_S",
+          "char": "S"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_H",
+          "char": "H"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_R",
+          "char": "R"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_T",
+          "char": "T"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 11.28,
+      "end": 14.08,
+      "text": "so I've decided not to bore you.",
+      "gloss": [
+        "DECIDE",
+        "NOT",
+        "BORE",
+        "|"
+      ],
+      "emotion": {},
+      "items": [
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_D",
+          "char": "D"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_E",
+          "char": "E"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_C",
+          "char": "C"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_I",
+          "char": "I"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_D",
+          "char": "D"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_E",
+          "char": "E"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_T",
+          "char": "T"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_B",
+          "char": "B"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_R",
+          "char": "R"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_E",
+          "char": "E"
+        },
+        {
+          "type": "pause",
+          "dur": 0.4
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "start": 14.08,
+      "end": 18.92,
+      "text": "By being 30 seconds long, yes this is 30 seconds long, we don't have time to wear a thong",
+      "gloss": [
+        "30",
+        "SECOND",
+        "LONG",
+        "30",
+        "SECOND",
+        "LONG",
+        "NOT",
+        "TIME",
+        "WEAR",
+        "THONG"
+      ],
+      "emotion": {},
+      "items": [
+        {
+          "type": "text",
+          "label": "30"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_S",
+          "char": "S"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_E",
+          "char": "E"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_C",
+          "char": "C"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_D",
+          "char": "D"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_L",
+          "char": "L"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_G",
+          "char": "G"
+        },
+        {
+          "type": "text",
+          "label": "30"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_S",
+          "char": "S"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_E",
+          "char": "E"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_C",
+          "char": "C"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_D",
+          "char": "D"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_L",
+          "char": "L"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_G",
+          "char": "G"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_T",
+          "char": "T"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_T",
+          "char": "T"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_I",
+          "char": "I"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_M",
+          "char": "M"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_E",
+          "char": "E"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_W",
+          "char": "W"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_E",
+          "char": "E"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_A",
+          "char": "A"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_R",
+          "char": "R"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_T",
+          "char": "T"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_H",
+          "char": "H"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_G",
+          "char": "G"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "start": 18.92,
+      "end": 21.92,
+      "text": "or smoke a thong or play a ping pong, it's not matter what I do",
+      "gloss": [
+        "SMOKE",
+        "THONG",
+        "PLAY",
+        "PING",
+        "PONG",
+        "NOT",
+        "MATTER"
+      ],
+      "emotion": {},
+      "items": [
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_S",
+          "char": "S"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_M",
+          "char": "M"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_K",
+          "char": "K"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_E",
+          "char": "E"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_T",
+          "char": "T"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_H",
+          "char": "H"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_G",
+          "char": "G"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_P",
+          "char": "P"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_L",
+          "char": "L"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_A",
+          "char": "A"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_Y",
+          "char": "Y"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_P",
+          "char": "P"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_I",
+          "char": "I"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_G",
+          "char": "G"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_P",
+          "char": "P"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_G",
+          "char": "G"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_T",
+          "char": "T"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_M",
+          "char": "M"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_A",
+          "char": "A"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_T",
+          "char": "T"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_T",
+          "char": "T"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_E",
+          "char": "E"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_R",
+          "char": "R"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "start": 21.92,
+      "end": 27.72,
+      "text": "or what I wish to say to you, it's all for nothing, because you see the limitation set on me",
+      "gloss": [
+        "WISH",
+        "LIMITATION",
+        "SET"
+      ],
+      "emotion": {},
+      "items": [
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_W",
+          "char": "W"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_I",
+          "char": "I"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_S",
+          "char": "S"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_H",
+          "char": "H"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_L",
+          "char": "L"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_I",
+          "char": "I"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_M",
+          "char": "M"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_I",
+          "char": "I"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_T",
+          "char": "T"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_A",
+          "char": "A"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_T",
+          "char": "T"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_I",
+          "char": "I"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_S",
+          "char": "S"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_E",
+          "char": "E"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_T",
+          "char": "T"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "start": 27.72,
+      "end": 29.72,
+      "text": "of being 30 seconds long.",
+      "gloss": [
+        "30",
+        "SECOND",
+        "LONG",
+        "|"
+      ],
+      "emotion": {},
+      "items": [
+        {
+          "type": "text",
+          "label": "30"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_S",
+          "char": "S"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_E",
+          "char": "E"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_C",
+          "char": "C"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_D",
+          "char": "D"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_L",
+          "char": "L"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_O",
+          "char": "O"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_N",
+          "char": "N"
+        },
+        {
+          "type": "fingerspell",
+          "label": "FINGERSPELL_G",
+          "char": "G"
+        },
+        {
+          "type": "pause",
+          "dur": 0.4
+        }
+      ]
+    }
+  ]
+}
